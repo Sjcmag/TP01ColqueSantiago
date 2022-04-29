@@ -3,6 +3,7 @@ package ar.edu.unju.edm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ar.edu.unju.edm.model.Punto12;
 import ar.edu.unju.edm.model.Tp01Model;
 
 @SpringBootApplication
@@ -16,8 +17,9 @@ public class Tp01ColqueSantiago1Application {
      System.out.println("Es :" +unPunto.Punto3Primo(3));
      System.out.println("Es :"+unPunto.Punto4mes(4));
      System.out.println("Es ;"+unPunto.Punto5mes(2006));
-     System.out.println("Es ; " +unPunto.Punto6Notas(5, 4, 3, 10, 10));
-     
+   Punto12 tiempo=new Punto12(3);
+   
+     System.out.println("es:"+tiempo.calculoTiempo());
 
 	}
  }

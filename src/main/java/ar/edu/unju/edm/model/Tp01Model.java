@@ -152,20 +152,18 @@ public class Tp01Model {
     	return mes;
     	
     }
-    public String Punto6Notas(int num1 ,int num2,int num3,int num4,int num5) {
+    public String Punto6Notas(int num1 ) {
     	String Resultado;
-    	int resultad=num1+num2+num3+num4+num5;
-    	resultad=resultad/5;
-    	if (resultad==6) {
+    	if (num1==6) {
         	Resultado ="alumno regulizado";
         	return Resultado;
     	 }
          else {
-        	 if(resultad>6 && resultad<11) {
+        	 if(num1>6 && num1<11) {
         		 return Resultado="el alumno es promocionado";
         	 }
         	 else {
-        		 if (resultad<6 &&resultad>1) {
+        		 if (num1<6 &&num1>1) {
         			 return Resultado="el alumno desaprueba";
         		 }
         		 else {
@@ -174,6 +172,61 @@ public class Tp01Model {
         	 }
          }
     }
+    public String Punto8() {
+ 	   
+ 	   String resultadoString= "";
+ 	   int resultadoInteger=1;
+ 	   int factorMultiplicador=1;
+ 	   do {
+ 		   resultadoInteger=this.num1 * factorMultiplicador;
+ 		   factorMultiplicador=factorMultiplicador+1;
+ 		   resultadoString = resultadoString + Integer.toString(resultadoInteger) + " - ";
+ 	   }
+ 	   while((resultadoInteger + this.num1)< 100);
+ 	   return resultadoString;
+    }
+    public String restante1() {
+ 	   String resultadoString= "";
+ 	   int resultadoInteger=1;
+ 	   int restante=20;
+ 	   this.num1=this.num1+20;
+ 	   for (int i=1 ; i!=10 ; i++)   {
+ 		   resultadoInteger=this.num1  - restante ;
+ 		   this.num1=resultadoInteger;
+ 		   resultadoString = resultadoString + Integer.toString(resultadoInteger) + " - ";
+ 	   }
+ 	   return resultadoString;
+ 	   
+ 	   
+    } 
+    public String restante2() {
+ 	   String resultadoString= "";
+ 	   int resultadoInteger=1;
+ 	   int restante=20;
+ 	   this.num1=this.num1+20;
+ 	   while (this.num1!=160) {
+ 		   resultadoInteger=this.num1 - restante ;
+ 		   this.num1=resultadoInteger;
+ 		   resultadoString = resultadoString + Integer.toString(resultadoInteger) + " - ";
+ 	   }
+ 	   return resultadoString;
+ 	   
+ 	   
+    } 
+    public String restante3() {
+ 	   String resultadoString= "";
+ 	   int resultadoInteger=1;
+ 	   int restante=20;
+ 	   this.num1=this.num1+20;
+ 	   do  {
+ 		   resultadoInteger=this.num1 - restante ;
+ 		   this.num1=resultadoInteger;
+ 		   resultadoString = resultadoString + Integer.toString(resultadoInteger) + " - ";
+ 	   }while(this.num1 >160);
+ 	   return resultadoString;
+ 	   
+ 	   
+    } 
     
 
 

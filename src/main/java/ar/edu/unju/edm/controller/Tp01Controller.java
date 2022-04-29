@@ -1,12 +1,21 @@
 package ar.edu.unju.edm.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-
+import ar.edu.unju.edm.model.Punto10;
+import ar.edu.unju.edm.model.Punto11;
+import ar.edu.unju.edm.model.Punto12;
+import ar.edu.unju.edm.model.Punto8;
+import ar.edu.unju.edm.model.Punto9;
 import ar.edu.unju.edm.model.Tp01Model;
+
+
+
 
 @Controller
 public class Tp01Controller {
@@ -75,17 +84,72 @@ public class Tp01Controller {
 		}
 		
 		@GetMapping("/calculoCalificacion")
-	    public String getCalificacion(@RequestParam(name="num1")int num1,@RequestParam(name="num2")int num2,@RequestParam(name="num3")int num3,@RequestParam(name="num4")int num4,@RequestParam(name="num5")int num5,Model model) {
+	    public String getCalificacion(@RequestParam(name="num1")int num1,Model model) {
 			String resultadoC;
 			Tp01Model unalumno = new Tp01Model();
 			unalumno.setNum1(num1);
-			unalumno.setNum2(num2);
-			unalumno.setNum3(num3);
-			unalumno.setNum4(num4);
-			unalumno.setNum5(num5);
-	    	resultadoC=unalumno.Punto6Notas(num1, num2, num3, num4, num5);
+			
+	    	resultadoC=unalumno.Punto6Notas(num1);
 	    	model.addAttribute("resultadoC", resultadoC);
 			return "Punto6";
 	   
+		}
+		
+		@Autowired
+		Punto8 punto8;
+		@GetMapping("/calculoMultiplos")
+		public ModelAndView getMultiplo1 (@RequestParam (name= "num1") String numero) {
+			punto8.setNumero1(Integer.valueOf(numero));
+			String resultadoMultiplos=punto8.Punto8();
+			ModelAndView modelView = new ModelAndView("punto8");
+			modelView.addObject("resultado8",resultadoMultiplos);
+			modelView.addObject("numero",numero);
+			return modelView;
+			
+		}
+		@Autowired
+		Punto9 punto9;
+		@GetMapping("/calculoRestante1")
+		public ModelAndView getRestante1 (@RequestParam (name= "num1") String numero) {
+			punto9.setNumero1(Integer.valueOf(numero));
+			String resultadoRestante1=punto9.restante1();
+			ModelAndView modelView = new ModelAndView("punto9");
+			modelView.addObject("resultado9",resultadoRestante1);
+			//modelView.addObject("numero",numero);
+			return modelView;
+			
+		}
+		@Autowired
+		Punto10 punto10;
+		@GetMapping("/calculoRestante2")
+		public ModelAndView getRestante2 (@RequestParam (name= "num1") String numero) {
+			punto10.setNumero1(Integer.valueOf(numero));
+			String resultadoRestante2=punto10.restante2();
+			ModelAndView modelView = new ModelAndView("punto10");
+			modelView.addObject("resultado10",resultadoRestante2);
+			return modelView;
+			
+		}
+		
+		@Autowired
+		Punto11 punto11;
+		@GetMapping("/calculoRestante3")
+		public ModelAndView getRestante3 (@RequestParam (name= "num1") String numero) {
+			punto11.setNumero1(Integer.valueOf(numero));
+			String resultadoRestante3=punto11.restante3();
+			ModelAndView modelView = new ModelAndView("punto11");
+			modelView.addObject("resultado11",resultadoRestante3);
+			return modelView;
+			
+		}
+		@Autowired
+		Punto12 punto12;
+		@GetMapping("/calculoTiempo")
+		public ModelAndView getRestante4 (@RequestParam (name= "num1") String numero) {
+			punto12.setNumero1(Integer.valueOf(numero));
+			String resultadoRestante3=punto12.calculoTiempo();
+			ModelAndView modelView = new ModelAndView("punto12");
+			modelView.addObject("resultado12",resultadoRestante3);
+			return modelView;
 		}
 }
